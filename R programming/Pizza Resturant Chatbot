@@ -1,0 +1,52 @@
+# Greeting
+print("Hi! welcome to The pizza resturant")
+print("Here is a pizza menu")
+
+# Function to display the pizza menu and prices
+display_pizza_menu <- function() {
+  cat("===== Pizza Menu =====\n")
+  cat("1. Hawaiian - 129 THB\n")
+  cat("2. Pepperoni - 229 THB\n")
+  cat("3. Double_cheese - 329 THB\n")
+  cat("======================\n")
+}
+
+display_pizza_menu()
+
+print("I want 2 Pepperoni pizza")
+
+# Customer's choice
+customer_choice <- "Pepperoni"
+quantity_ordered <- 2
+
+ # Calculate the total cost
+  total_cost_THB <- pizza_prices_THB[customer_choice] * quantity_ordered
+
+  # Function to calculate the total cost based on the customer's choice and quantity
+calculate_order_cost <- function(pizza_type, quantity) {
+  # Define the prices for each pizza type in THB
+  pizza_prices_THB <- c(Hawaiian = 129, Pepperoni = 229, Double_cheese = 329)
+
+  # Check if the selected pizza type is valid
+  if (!(pizza_type %in% names(pizza_prices_THB))) {
+    stop("Invalid pizza type selected.")
+  }
+
+  # Calculate the total cost
+  total_cost_THB <- pizza_prices_THB[pizza_type] * quantity
+  return(total_cost_THB)
+}
+
+# Function to summarize the order
+summarize_order <- function(pizza_type, quantity, total_cost) {
+  cat("Your order summary:\n")
+  cat("Pizza Type: ", pizza_type, "\n")
+  cat("Quantity: ", quantity, "\n")
+  cat("Total Cost: ", total_cost, " THB\n")
+}
+
+# Calculate total cost for the customer's order
+total_cost_thb <- calculate_order_cost(customer_choice, quantity_ordered)
+
+# Display order summary
+summarize_order(customer_choice, quantity_ordered, total_cost_thb)
